@@ -1,0 +1,49 @@
+﻿@using MvcBookStore.Models
+@model List<Giohang>
+
+@{
+    ViewBag.Title = "Dathang";
+    Layout = "~/Views/Shared/_LayoutGiohang.cshtml";
+}
+
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table cellspacing="0" class="shop_table cart" style="margin-top: 30px;">
+                    @{
+                        KHACHHANG kh = (KHACHHANG)Session["Taikhoan"];
+                    }
+                    <thead>
+                        <tr>
+                            <th class="product-name">Họ tên Khách hàng</th>
+                            <th class="product-address">Địa chỉ</th>
+                            <th class="product-number">Điện thoại</th>
+                            <th class="product-date">Ngày đặt</th>
+                            <th class="product-to-date">Ngày giao hàng</th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            <tr style="height: 40px">
+                                <td style="font-weight:bold">@kh.HoTen</td>
+                                <td style="font-weight:bold"> @kh.DiachiKH</td>
+                                <td style="font-weight:bold"> @kh.DienthoaiKH</td>
+                                <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+                                <td style="font-weight:bold"><input type="date" name="Ngaygiao" /></td>
+                                <td><input id="order" type="submit" value="Đặt hàng" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

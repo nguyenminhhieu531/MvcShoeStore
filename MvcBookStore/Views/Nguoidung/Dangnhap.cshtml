@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_LayoutDangky.cshtml";
+}
+
+<link href="~/Content/assets/web/css/style.css" rel="stylesheet" />
+<link href="~/Content/assets/web/css/font-awesome.css" rel="stylesheet" />
+<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+<style>
+    td input[type="submit"] {
+        width: 100%;
+        background-color: #ef4d4d;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        font-size: 14px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        outline: none;
+        transition: .5s ease-in;
+        -webkit-transition: .5s ease-in;
+        -ms-transition: .5s ease-in;
+        -o-transition: .5s ease-in;
+        -moz-transition: .5s ease-in;
+    }
+
+    input{
+        width: 100%;
+    }
+</style>
+
+<h4 style="color:red; text-align:center"> @ViewBag.Thongbao</h4>
+<div class="login-form w3_form" style="margin-top: 40px;">
+    <div class="login w3_login">
+        <table align="center" class="w3l_grid" style="width: 100%; margin-top: 40px;">
+            <h2 class="login-header w3_header">ĐĂNG NHẬP</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <tr>
+                    <td>
+                        @Html.TextBox("TenDN")
+                        @ViewData["Loi1"]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Password("Matkhau")
+                        @ViewData["Loi2"]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="login" type="submit" value="Đăng nhập" />
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="second-section w3_section">
+            <div class="bottom-header w3_bottom">
+                <h3>OR</h3>
+            </div>
+            <div class="social-links w3_social">
+                <ul>
+                    <!-- facebook -->
+                    <li> <a class="facebook" href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+
+                    <!-- twitter -->
+                    <li> <a class="twitter" href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+
+                    <!-- google plus -->
+                    <li> <a class="googleplus" href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="bottom-text w3_bottom_text">
+                <p>No account yet?<a href="@Url.Action("Dangky","Nguoidung")">Signup</a></p>
+                <h4> <a href="#">Forgot your password?</a></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("login").addEventListener('click', function () {
+        alert("Đăng nhập thành công! Bấm Ok để reload lại trang");
+    });
+</script>
+

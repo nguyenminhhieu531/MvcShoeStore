@@ -1,0 +1,85 @@
+﻿
+@using MvcBookStore.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutGiohang.cshtml";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Giỏ hàng</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper" style="margin-top: 50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-content-right">
+                    <div class="woocommerce">
+                        <table cellspacing="0" class="shop_table cart">
+                            <thead>
+                                <tr>
+                                    <th class="product-name">SẢN PHẨM</th>
+                                    <th class="product-thumbnail-product">ẢNH SẢN PHẢM</th>
+                                    <th class="product-quantity">SỐ LƯỢNG</th>
+                                    <th class="product-price">GIÁ</th>
+                                    <th class="product-subtotal">TỔNG TIỀN</th>
+                                    <th class="#"></th>
+                                    <th class="#"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="cart_item">
+                                        <td class="product-name">@item.sTenGiay</td>
+                                        <td class="product-thumbnail-product"><img src="~/Hinhsanpham/@item.sAnhbia" width="180"></td>
+
+                                        @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMasp = item.iMaGiay }))
+                                        {
+                                            <td class="product-quantity">
+                                                <div class="quantity buttons_added">
+                                                    <input type="button" class="minus" value="-">
+                                                    <input type="number" min="1" name="txtSoluong" value="@item.iSoluong" />
+                                                    <input type="button" class="plus" value="+">
+                                                </div>
+                                            </td>
+                                            <td class="product-price">@String.Format("{0:0,0}", item.dDonggia)</td>
+                                            <td class="product-subtotal">@String.Format("{0:0,0}", item.dThanhtien)</td>
+                                            <td> @Html.ActionLink("Xóa", "Xoagiohang", new { @iMaSp = item.iMaGiay }) </td>
+                                            <td> <input type="submit" value="Cập Nhật" /></td>
+                                        }
+                                    </tr>
+                                }
+                                <tr style="font-weight: bold; text-align:right; color:red">
+                                    <td colspan="4"> Số lượng giày: @ViewBag.Tongsoluong </td>
+                                    <td colspan="5"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ </td>
+                                </tr>
+                                <tr style="font-weight: bold; text-align:right; color:blue">
+                                    <td colspan="9">
+                                        @Html.ActionLink("Xóa giỏ hàng", "XoaTatcaGiohang")
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold; color:cornflowerblue; text-align:left">
+                                    <td colspan="9" align="center" style=" padding-top: 15px; padding-bottom: 15px;">
+                                        @Html.ActionLink("Đặt hàng", "Dathang", "Giohang")
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

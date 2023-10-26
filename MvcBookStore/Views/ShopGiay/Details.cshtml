@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
+}
+<style type="text/css">
+    #Datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 35px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        #Datmua a:hover {
+            background-color: white;
+            color: black;
+        }
+</style>
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Thông tin sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper" style="margin-top: 30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-content-right">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img src="~/Hinhsanpham/@Model.Anhbia" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <div class="product-inner">
+                                <h2 class="product-name">@Model.TenGiay</h2>
+                                <div class="product-inner-price">
+                                    <ins>@Model.Giaban VND</ins>
+                                </div>
+
+                                <form action="" class="cart">
+                                    <a id="add-to-card" class="btn btn-primary" href="@Url.Action("ThemGiohang","GioHang",new { @iMaGiay = @Model.MaGiay, @strURL=Request.Url.ToString()})">
+                                        Thêm vào giỏ hàng
+                                    </a>
+                                </form>
+
+                                <div class="product-inner-category">
+                                    <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                </div>
+
+                                <div role="tabpanel">
+                                    <ul class="product-tab" role="tablist">
+                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                            <h2>Mô tả sản phẩm</h2>
+                                            <p>@Model.Mota</p>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                                            <h2>Reviews</h2>
+                                            <div class="submit-review">
+                                                <p><label for="name">Name</label> <input name="name" type="text"></p>
+                                                <p><label for="email">Email</label> <input name="email" type="email"></p>
+                                                <div class="rating-chooser">
+                                                    <p>Xếp hạng</p>
+
+                                                    <div class="rating-wrap-post">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
+                                                <p><input type="submit" value="Submit"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="details-product">
+    <div style="width:40%" ; float:left; border-left dotted 1px; border-color:azure">
+        <img src="~/Hinhsanpham/@Model.Anhbia" width="100%" />
+    </div>
+
+    <div style="width:60%; float:left; padding:10px;">
+        <h4 style="font-weight:bold; ">Tên giày: @Model.TenGiay</h4>
+        <p style="text-align:justify"><span style="font-weight:bold">Mô tả: </span>@Model.Mota</p>
+        <p style="font-weight:bold">Giá bán: <span font-size:16pt"> @Model.Giaban VND</span></p>
+    </div>
+
+    <div id="Datmua">
+        <a href="@Url.Action("ThemGiohang","GioHang",new { @iMaGiay = @Model.MaGiay, @strURL=Request.Url.ToString()})">
+            ĐẶT MUA
+        </a>
+    </div>
+</div>*@
+
+<script>document.getElementById("add-to-card").addEventListener('click', function () {
+        alert("Thêm vào giỏ hàng thành công!");
+    });
+</script>

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Xacnhandonhang";
+    Layout = "~/Views/Shared/_LayoutGiohang.cshtml";
+}
+
+
+
+
+<div class="container" style="margin-top: 35px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div style="text-align:center;background-color:aquamarine;width:100%">
+                <h4>Cám ơn bạn đã mua hàng tại của hàng chúng tôi </h4>
+
+                <h5>Đơn hàng của quý khách đã được chúng tôi ghi nhận. <p>Quý khách có thể chọn hình thức thanh toán bên dưới</p></h5>
+            </div>
+            <p style="text-align:center;color:#0026ff">
+                @Html.ActionLink("Thanh toán qua PayPal", "PaymentWithPaypal", "Paypal") |
+                Nhận hàng trực tiếp
+            </p>
+        </div>
+    </div>
+</div>
